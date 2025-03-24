@@ -9,3 +9,4 @@ Star Wars API Interface uses the star Wars API at [swapi.dev](https://swapi.dev/
 - TUnit 0.18.60
 - .NET SDK 8.0.407
 - .NET Runtime 8.0.14
+- ResSharp.Serilog.Auto 1.6.0
