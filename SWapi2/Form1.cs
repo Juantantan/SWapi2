@@ -82,29 +82,40 @@ namespace SWapi2
         {
             lbxWarningMessage.Visible = false;
             films = AllFilms.GetFilms();
-            if (films != null && films.Count > 0)
+            if (films == null)
             {
-                lbxFilms.Visible = true;
-                DGVFilms.Visible = true;
-                lbxCrawlText.Text = "";
-                FilmFieldsForDisplays = new List<FilmFieldsForDisplay>();
-                foreach (Film film in films)
-                {
-                    FilmFieldsForDisplay FilmFieldsForDisplay = new FilmFieldsForDisplay();
-                    FilmFieldsForDisplay.episode_id = film.episode_id;
-                    FilmFieldsForDisplay.title = film.title;
-                    FilmFieldsForDisplay.release_date = film.release_date;
-                    FilmFieldsForDisplay.opening_crawl = film.opening_crawl;
-                    FilmFieldsForDisplay.url = film.url;
-                    FilmFieldsForDisplays.Add(FilmFieldsForDisplay);
-                }
-
-                DGVFilms.DataSource = FilmFieldsForDisplays;
-                DGVFilms.Height = 180;
-                DGVFilms.Width = 508;
-                listBoxPlanets.Height = 180;
-                listBoxHomeworlPerson.Height = 180;
+                lbxWarningMessage.Text = "Error: Films list is null. Please check logs";
+                lbxWarningMessage.Visible = true;
+                return;
             }
+            else if (films.Count == 0)
+            {
+                lbxWarningMessage.Text = "Error: No films found. Please check logs";
+                lbxWarningMessage.Visible = true;
+                return;
+            }
+
+            lbxFilms.Visible = true;
+            DGVFilms.Visible = true;
+            lbxCrawlText.Text = "";
+            FilmFieldsForDisplays = new List<FilmFieldsForDisplay>();
+            foreach (Film film in films)
+            {
+                FilmFieldsForDisplay FilmFieldsForDisplay = new FilmFieldsForDisplay();
+                FilmFieldsForDisplay.episode_id = film.episode_id;
+                FilmFieldsForDisplay.title = film.title;
+                FilmFieldsForDisplay.release_date = film.release_date;
+                FilmFieldsForDisplay.opening_crawl = film.opening_crawl;
+                FilmFieldsForDisplay.url = film.url;
+                FilmFieldsForDisplays.Add(FilmFieldsForDisplay);
+            }
+
+            DGVFilms.DataSource = FilmFieldsForDisplays;
+            DGVFilms.Height = 180;
+            DGVFilms.Width = 508;
+            listBoxPlanets.Height = 180;
+            listBoxHomeworlPerson.Height = 180;
+
         }
     }
 }

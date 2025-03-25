@@ -1,5 +1,6 @@
 ﻿using RestSharp;
 using Serilog;
+using Serilog.Sinks;
 namespace SWapi2.Classes.Logging
 {
     internal static class RestSharpLogging
@@ -7,10 +8,23 @@ namespace SWapi2.Classes.Logging
 
         public static void RestSharpLogger(string UrlRequestSuffix)
         {
+            string projectDir = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\.."));
+            string LogDirectory = $@"{projectDir}\Logs";
+            if (!Directory.Exists(@$"{LogDirectory}"))
+            {
+                Directory.CreateDirectory(@$"{LogDirectory}");
+            }
+            string logPath = $@"{LogDirectory}\RestSharpErrorLog.txt";
+            if (!File.Exists(@$"{logPath}"))
+            {
+                File.Create($@"{logPath}").Close();
+            }
+
+            Serilog.Formatting.ITextFormatter formatter = new Serilog.Formatting.Display.MessageTemplateTextFormatter("Text");
             // Configure Serilog
             var loggerConfiguration = new LoggerConfiguration()
                 .MinimumLevel.Debug()
-                .WriteTo.Console();  // Or other sinks
+                .WriteTo.File(formatter, logPath);// Console();  // Or other sinks
             var restClientAutologConfiguration = new RestClientAutologConfiguration()
             {
                 MessageTemplateForSuccess = "{Method} {Url} responded {StatusCode}",

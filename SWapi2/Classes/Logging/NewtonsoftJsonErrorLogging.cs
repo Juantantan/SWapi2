@@ -19,7 +19,7 @@
             string logPath = $@"{LogDirectory}\JsonErrorLog.txt";
             if (!File.Exists(@$"{logPath}"))
             {
-                File.Create(@$"{logPath}");
+                File.Create(@$"{logPath}").Close();
             }
             StreamWriter sw = new StreamWriter(@$"{logPath}");
             sw.WriteLine(message);

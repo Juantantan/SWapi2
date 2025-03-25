@@ -16,10 +16,10 @@
             {
                 Directory.CreateDirectory(@$"{LogDirectory}");
             }
-            string logPath = $@"{LogDirectory}\RestSharpLog.txt";
+            string logPath = $@"{LogDirectory}\ErrorLog.txt";
             if (!File.Exists(@$"{logPath}"))
             {
-                File.Create(@$"{logPath}");
+                File.Create(@$"{logPath}").Close();
             }
             StreamWriter sw = new StreamWriter(@$"{logPath}");
             sw.WriteLine(message);

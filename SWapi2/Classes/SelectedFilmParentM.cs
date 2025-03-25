@@ -31,7 +31,7 @@ namespace Star_Wars_API_Interface_Restful.Classes
                 opening_crawl = _film.opening_crawl,
                 release_date = _film.release_date,
                 url = _film.url,
-                planets = PlanetsForFilmM.GetPlanetsForFilm(_film.url),
+                planets = null, //PlanetsForFilmM.GetPlanetsForFilm(_film.url),
                 personHomeworlds = PersonsByHomeworldForFilmM.GetPersonsByHomeworldForFilm(_film.url),
             };
             return _selectedFilm;

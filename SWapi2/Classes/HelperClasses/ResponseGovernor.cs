@@ -1,5 +1,4 @@
-﻿
-using RestSharp;
+﻿using RestSharp;
 using SWapi2.Classes.Logging;
 
 namespace SWapi2.Classes.HelperClasses
@@ -10,13 +9,18 @@ namespace SWapi2.Classes.HelperClasses
         ///    Gets a List of page URLs. swapi.dev returns 10 results per page
         ///    Can be used generically for any reponse that has a count over 10
         ///</Summary>
-        public static RestResponse GetResponse(string ResourceSuffixURL)
+        public static RestResponse? GetResponse(string ResourceSuffixURL)
         {
             RestResponse response;
             try
             {
                 RestClient client = new RestClient(SwapiUrlConstants.BaseURL);
                 response = client.Execute(new RestRequest(ResourceSuffixURL));
+                if (response.ErrorException != null)
+                {
+                    ErrorLogging.WriteToLog(@$"Handled Rest Exception\n{response.ErrorException}");
+                    return null;
+                }
                 return response;
             }
             catch (Exception ex)

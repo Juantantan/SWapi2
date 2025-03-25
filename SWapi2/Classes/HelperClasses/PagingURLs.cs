@@ -1,5 +1,4 @@
 ﻿namespace SWapi2.Classes.HelperClasses
-
 {
     internal static class PagingURLs
     {

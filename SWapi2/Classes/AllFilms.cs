@@ -14,11 +14,21 @@ namespace SWapi2.Classes
         ///<Summary>
         ///    Gets a filled List of class objetcs of type Film
         ///</Summary>
-        public static List<Film> GetFilms()
+        public static List<Film>? GetFilms()
         {
-            List<Film> _films;
+            List<Film>? _films;
             RestResponse? response = ResponseGovernor.GetResponse(SwapiUrlConstants.FilmsRequestURL);
+            if (response == null)
+            {
+                Logging.ErrorLogging.WriteToLog("Error: Response is null");
+                return null;
+            }
             _films = JsonConvert.DeserializeObject<FilmRoot>(response.Content).results;
+            if (_films == null)
+            {
+                Logging.ErrorLogging.WriteToLog("Error: Films list is null");
+                return null;
+            }
             return _films;
         }
 
