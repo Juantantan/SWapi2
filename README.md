@@ -1,7 +1,7 @@
 # SWapi2
 
 ## About
-Star Wars API Interface uses the star Wars API at [swapi.dev](https://swapi.dev/api/) 
+Star Wars API Interface, which uses the star Wars Web API at [swapi.dev](https://swapi.dev/api/) 
 
 ## Dependencies
 - Newtonsoft.Json 13.0.3
