@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using RestSharp;
+using SWapi2.Classes.HelperClasses;
 using SWapi2.Classes.SWapiMappingClasses;
 using SWapi2.Interfaces;
 
@@ -18,7 +19,7 @@ namespace SWapi2.Classes
             IEnumerable<Planet> allPlanets;
             IEnumerable<Planet> planetsFilteredByFilm;
             var client = new RestClient(SwapiUrlConstants.BaseURL);
-            RestResponse response = client.Execute(new RestRequest($"{SwapiUrlConstants.PlanetsRequestURL}"));
+            RestResponse? response = ResponseGovernor.GetResponse($"{SwapiUrlConstants.PlanetsRequestURL}");
             allPlanets = JsonConvert.DeserializeObject<PlanetRoot>(response.Content).results;
             planetsFilteredByFilm = allPlanets.Where(p => p.films.Contains(FilmUrl)).OrderBy(p => p.name);
             return planetsFilteredByFilm.ToList<Planet>();

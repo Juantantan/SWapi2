@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using RestSharp;
 using SWapi2.Classes.SWapiMappingClasses;
+using SWapi2.Classes.HelperClasses;
 using SWapi2.Interfaces;
 
 namespace SWapi2.Classes
@@ -21,13 +22,12 @@ namespace SWapi2.Classes
             {
                 return null;
             }
-            List<string> pageURLs = HelperMethods.GetPagingURLs(personRoot.count);
+            List<string> pageURLs = PagingURLs.GetPagingURLs(personRoot.count);
             foreach (string pageURL in pageURLs)
             {
                 List<Person>? person = new List<Person>();
-                var clientPaging = new RestClient(SwapiUrlConstants.BaseURL);
-                RestResponse pageResponse = clientPaging.Execute(new RestRequest($"{SwapiUrlConstants.PeopleRequestURL}{pageURL}"));
-                person = JsonConvert.DeserializeObject<PersonRoot>(pageResponse.Content).results;
+                RestResponse? response = ResponseGovernor.GetResponse(($"{SwapiUrlConstants.PeopleRequestURL}{pageURL}"));
+                person = JsonConvert.DeserializeObject<PersonRoot>(response.Content).results;
                 allPersons.AddRange(person);
             }
             return allPersons;

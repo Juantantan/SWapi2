@@ -100,7 +100,6 @@ namespace SWapi2
                 }
 
                 DGVFilms.DataSource = FilmFieldsForDisplays;
-                DataGridViewElementStates includeFilter = DataGridViewElementStates.Visible;
                 DGVFilms.Height = 180;
                 DGVFilms.Width = 508;
                 listBoxPlanets.Height = 180;

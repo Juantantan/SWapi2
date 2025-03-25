@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using RestSharp;
+using SWapi2.Classes.HelperClasses;
 using SWapi2.Classes.SWapiMappingClasses;
 using SWapi2.Interfaces;
 
@@ -15,11 +16,11 @@ namespace SWapi2.Classes
         ///</Summary>
         public static Planet GetPlanet(string PlanetId)
         {
-            Planet _planet;
+            Planet planet;
             var client = new RestClient(SwapiUrlConstants.BaseURL);
-            RestResponse response = client.Execute(new RestRequest($"{SwapiUrlConstants.PlanetsRequestURL}/{PlanetId}"));
-            _planet = JsonConvert.DeserializeObject<Planet>(response.Content);
-            return _planet;
+            RestResponse? response = ResponseGovernor.GetResponse($"{SwapiUrlConstants.PlanetsRequestURL}/{PlanetId}");
+            planet = JsonConvert.DeserializeObject<Planet>(response.Content);
+            return planet;
         }
     }
 }

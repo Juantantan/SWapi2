@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Classes\HelperMethods.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Classes\Logging\" />
     <Folder Include="Classes\SWapiMappingClasses\" />
     <Folder Include="Interfaces\" />
@@ -19,7 +23,6 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="RestSharp" Version="112.1.0" />
     <PackageReference Include="RestSharp.Serilog.Auto" Version="1.6.0" />
-    <PackageReference Include="TUnit" Version="0.18.60" />
   </ItemGroup>
 
 </Project>

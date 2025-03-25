@@ -182,7 +182,7 @@
             listBoxPlanets.ItemHeight = 20;
             listBoxPlanets.Location = new Point(600, 103);
             listBoxPlanets.Name = "listBoxPlanets";
-            listBoxPlanets.Size = new Size(164, 222);
+            listBoxPlanets.Size = new Size(164, 262);
             listBoxPlanets.TabIndex = 3;
             // 
             // listBoxHomeworlPerson
@@ -195,7 +195,7 @@
             listBoxHomeworlPerson.ItemHeight = 20;
             listBoxHomeworlPerson.Location = new Point(770, 103);
             listBoxHomeworlPerson.Name = "listBoxHomeworlPerson";
-            listBoxHomeworlPerson.Size = new Size(334, 222);
+            listBoxHomeworlPerson.Size = new Size(334, 262);
             listBoxHomeworlPerson.TabIndex = 4;
             // 
             // lbxPersonsHomeworld
@@ -225,7 +225,7 @@
             lbxCrawlText.AutoSize = true;
             lbxCrawlText.Font = new Font("Franklin Gothic Medium", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lbxCrawlText.ForeColor = Color.FromArgb(255, 128, 0);
-            lbxCrawlText.Location = new Point(432, 348);
+            lbxCrawlText.Location = new Point(432, 366);
             lbxCrawlText.Name = "lbxCrawlText";
             lbxCrawlText.Size = new Size(61, 24);
             lbxCrawlText.TabIndex = 7;

@@ -1,8 +1,10 @@
 ﻿using Newtonsoft.Json;
 using RestSharp;
+using SWapi2.Classes.HelperClasses;
 using SWapi2.Classes.Logging;
 using SWapi2.Classes.SWapiMappingClasses;
 using SWapi2.Interfaces;
+using SWapi2.Enumerators;
 namespace SWapi2.Classes
 {
     ///<Summary>
@@ -20,11 +22,10 @@ namespace SWapi2.Classes
             PersonRoot personRoot;
             try
             {
-                RestClient client = new RestClient(SwapiUrlConstants.BaseURL);
-                response = client.Execute(new RestRequest($"{SwapiUrlConstants.PeopleRequestURL}"));
+                response = ResponseGovernor.GetResponse(SwapiUrlConstants.PeopleRequestURL);
                 personRoot = JsonConvert.DeserializeObject<PersonRoot>(response.Content);
-
             }
+            /// <exception cref="JsonReaderException">Thrown when an error occurs during JSON deserialization</exception>
             catch (JsonReaderException ex)
             {
                 JsonErrorLogging.WriteToLog(ex.Message);

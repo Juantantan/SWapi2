@@ -2,6 +2,7 @@
 using SWapi2.Classes.SWapiMappingClasses;
 using RestSharp;
 using Newtonsoft.Json;
+using SWapi2.Classes.HelperClasses;
 
 namespace SWapi2.Classes
 {
@@ -16,8 +17,7 @@ namespace SWapi2.Classes
         public static List<Film> GetFilms()
         {
             List<Film> _films;
-            var client = new RestClient(SwapiUrlConstants.BaseURL);
-            RestResponse response = client.Execute(new RestRequest(SwapiUrlConstants.FilmsRequestURL));
+            RestResponse? response = ResponseGovernor.GetResponse(SwapiUrlConstants.FilmsRequestURL);
             _films = JsonConvert.DeserializeObject<FilmRoot>(response.Content).results;
             return _films;
         }

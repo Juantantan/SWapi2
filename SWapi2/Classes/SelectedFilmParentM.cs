@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using RestSharp;
 using SWapi2.Classes;
+using SWapi2.Classes.HelperClasses;
+using SWapi2.Enumerators;
 using SWapi2.Classes.SWapiMappingClasses;
 using SWapi2.Interfaces;
 
@@ -20,8 +22,7 @@ namespace Star_Wars_API_Interface_Restful.Classes
             int filmIndex = FilmURL.IndexOf("films/");
             string filmId = FilmURL.Substring(filmIndex + 5);
             filmId = filmId.Replace("/", "");
-            var client = new RestClient(SwapiUrlConstants.BaseURL);
-            RestResponse? response = client.Execute(new RestRequest($"{SwapiUrlConstants.FilmsRequestURL}/{filmId}"));
+            RestResponse? response = ResponseGovernor.GetResponse($"{SwapiUrlConstants.FilmsRequestURL}/{filmId}");
             _film = JsonConvert.DeserializeObject<Film>(response.Content);
             SelectedFilmParent _selectedFilm = new SelectedFilmParent
             {
