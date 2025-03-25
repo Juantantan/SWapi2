@@ -8,8 +8,9 @@ Alternatively, you can get all the characters in 9 pages (81 / 10 plus one remai
 
 ## Asynchronous api calls
 When a film is selected, this interface needs to make several api calls:
-. several to Fill the Planet List 
-. several to get all the characters then filter them by film
+- several to Fill the Planet List 
+- several to get all the characters then filter them by film
+  
 It might be good to make each set of calls separate, so that they can be run asynchronously. That way, the planets List would be visible first, then the Characters by Homeworld List could be displayed.
 The crawl text is part of the base film request, so that can be brought back immediately.
 
