@@ -4,13 +4,13 @@ using SWapi2.Classes.HelperClasses;
 using SWapi2.Classes.Logging;
 using SWapi2.Classes.SWapiMappingClasses;
 using SWapi2.Interfaces;
-using SWapi2.Enumerators;
+
 namespace SWapi2.Classes
 {
     ///<Summary>
     ///    Contains method to get an instance of the PersonRoot class
     ///</Summary> 
-    public class PersonsRootM : IGetPersonsRoot
+    public class PersonsRootM: IGetPersonsRoot
     {
         ///<Summary>
         ///    Gets an instance of the unique PersonRoot class. This class describes the Person child 

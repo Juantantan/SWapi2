@@ -115,7 +115,6 @@ namespace SWapi2
             DGVFilms.Width = 508;
             listBoxPlanets.Height = 180;
             listBoxHomeworlPerson.Height = 180;
-
         }
     }
 }

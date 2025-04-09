@@ -17,6 +17,7 @@
     <Folder Include="Classes\SWapiMappingClasses\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Logs\" />
+    <Folder Include="images\" />
   </ItemGroup>
 
   <ItemGroup>

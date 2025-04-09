@@ -14,7 +14,7 @@ namespace SWapi2.Classes
         ///<Summary>
         ///    Get complete List of filled Person class Objects
         ///</Summary>
-        public static List<Person>? GetAllPersons()
+        static public List<Person>? GetAllPersons()
         {
             List<Person>? allPersons = new List<Person>();
             PersonRoot? personRoot = PersonsRootM.GetPersonRoot();

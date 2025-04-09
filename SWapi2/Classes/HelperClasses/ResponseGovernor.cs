@@ -9,7 +9,7 @@ namespace SWapi2.Classes.HelperClasses
         ///    Gets a List of page URLs. swapi.dev returns 10 results per page
         ///    Can be used generically for any reponse that has a count over 10
         ///</Summary>
-        public static RestResponse? GetResponse(string ResourceSuffixURL)
+        static public RestResponse? GetResponse(string ResourceSuffixURL)
         {
             RestResponse response;
             try
